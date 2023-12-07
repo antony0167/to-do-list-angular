@@ -1,0 +1,35 @@
+<div class="container-lg m-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 fw-bold fs-4">Today</div>
+  </div>
+  <div class="row justify-content-center my-3">
+    <div class="col-lg-6 p-3">
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <label for="task" class="form-label fw-bold">My projects</label>
+        <div class="input-group">
+          <input class="form-control rounded-4" type="text" id="task" name="task" ngModel>
+          <div class="input-group-append">
+            <button class="btn btn-success d-grid" type="submit">Add</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div *ngFor="let task of taskArray">
+    <div class="row d-flex justify-content-center my-2">
+      <div class="col-lg-6 align-items-center d-flex">
+        <input class="form-check-input me-1 border-dark-subtle me-2" type="checkbox" value="" id="taskName" (click)="onToggle(task.index)">
+        <label class="form-check-label" [ngClass]="{'text-decoration-line-through': task.checked}" for="taskName">
+          {{task.name}}
+        </label>
+        <button class="btn btn-danger ms-auto rounded-pill" (click)="onDelete(task.index)">Delete</button>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
+
